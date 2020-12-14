@@ -17,6 +17,7 @@
                     <th>Name</th>
                     <th>Email</th>
                     <th>Role</th>
+                    <th>Code</th>
                     <th>Action</th>
                   </tr>
                   </thead>
@@ -27,6 +28,7 @@
                     <td>{{$value->name}}</td>
                     <td>{{$value->email}}</td>
                     <td>{{$value->role}}</td>
+                    <td>{{$value->code}}</td>
                     <td>
                     <a href="{{route('users.edit',$value->id)}}" class="btn btn-success"><i class='fa fa-edit'></i></a>
                     <a href="" class="btn btn-danger"><i class='fa fa-trash'></i></a>

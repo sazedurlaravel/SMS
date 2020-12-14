@@ -20,25 +20,24 @@
 				           <form action="{{route('users.store')}}" method="POST">
                     @csrf
                       <div class="form-row">
-                        <div class="col-md-6 form-group">
+                        <div class="col-md-4 form-group">
+                          <label>Role</label>
+                         <select name="role" class="form-control">
+                           <option value="">Select Role</option>
+                           <option value="admin">Admin</option>
+                           <option value="user">User</option>
+                         </select>
+                        </div>
+                        <div class="col-md-4 form-group">
                           <label>Name</label>
                           <input class="form-control" type="text" name="name" placeholder="Enter User Name" >
                         </div>
-                        <div class="col-md-6 form-group">
+                        <div class="col-md-4 form-group">
                           <label>Email</label>
                           <input class="form-control" type="email" name="email" placeholder="Enter Email" >
                         </div>
                       </div> 
-                      <div class="form-row">
-                        <div class="col-md-6 form-group">
-                          <label>Password</label>
-                          <input class="form-control" type="password" name="password" >
-                        </div>
-                        <div class="col-md-6 form-group">
-                          <label>Confirm Password</label>
-                          <input class="form-control" type="password" name="password2" >
-                        </div>
-                      </div> 
+                     
                       <div class="form-row">
                          <div class="col-md-6 form-group">
                           <button type="submit" class="btn btn-success">

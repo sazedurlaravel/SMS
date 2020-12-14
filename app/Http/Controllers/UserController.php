@@ -40,11 +40,14 @@ class UserController extends Controller
             
 
         ]);
+        $code=rand(0000,9999);
     	$Data = new User;
     	$Data->userType = "admin";
         $Data->name = $request->name;
     	$Data->email = $request->email;
-    	$Data->password = bcrypt($request->password);
+        $Data->role = $request->role;
+    	$Data->password = bcrypt($code);
+        $Data->code = $code;
     	$Data->save();
 
     	return redirect()->route('users.view')->with('success','User added successfully !!');
