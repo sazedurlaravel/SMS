@@ -147,7 +147,7 @@ Route::prefix('students')->group(function(){
 	Route::get('/edit/{id}','StudentRegController@edit')->name('students.edit');
 	Route::post('/update/{id}','StudentRegController@update')->name('students.update');
 	Route::post('/store','StudentRegController@store')->name('students.store');
-	Route::get('/delete/{id}','StudentRegController@delete')->name('students.delete');
+	Route::get('/class-year-wise','StudentRegController@classYearWise')->name('students.class.year.search');
 });
 
 

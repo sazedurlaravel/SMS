@@ -38,6 +38,17 @@
 <!-- AdminLTE for demo purposes -->
 <script src="{{asset('dist/js/demo.js')}}"></script>
 
+<script type="text/javascript">
+  $(document).ready(function(){
+    $('#image').change(function(e){
+      var reader = new FileReader();
+      reader.onload = function(e){
+        $('#showimg').attr('src',e.target.result);
+      }
+      reader.readAsDataURL(e.target.files['0']);
+    });
+  });
+</script>
 <script>
   $(function () {
     $("#example1").DataTable({

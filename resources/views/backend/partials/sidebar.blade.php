@@ -169,6 +169,12 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
+                <a href="{{route('students.view')}}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>View Student</p>
+                </a>
+              </li>
+              <li class="nav-item">
                 <a href="{{route('students.add')}}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Student Registration</p>
