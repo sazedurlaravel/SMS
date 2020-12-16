@@ -5,11 +5,8 @@
  <div class="card">
               <div class="card-header">
                 <h3 class="card-title">
-                  @if(isset($editData))
-                  Edit Student
-                  @else
-                  Add Student
-                  @endif
+                  
+                  Student Promotion
 
 
                 </h3>
@@ -21,7 +18,7 @@
               	
                 <table id="example1" class="table table-bordered table-striped">
                 	
-				           <form action="{{(@$editData)? route('students.update',$editData->student_id):route('students.store')}}" method="POST" enctype="multipart/form-data">
+				           <form action="{{route('students.promotion.store',$editData->student_id)}}" method="POST" enctype="multipart/form-data">
                     @csrf
                     <input type="hidden" name="id" value="{{@$editData->id}}">
                     <h3>Student Personal Info</h3>

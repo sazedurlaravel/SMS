@@ -144,10 +144,12 @@ Route::prefix('setups')->group(function(){
 Route::prefix('students')->group(function(){
 	Route::get('/view','StudentRegController@view')->name('students.view');
 	Route::get('/add','StudentRegController@add')->name('students.add');
-	Route::get('/edit/{id}','StudentRegController@edit')->name('students.edit');
-	Route::post('/update/{id}','StudentRegController@update')->name('students.update');
+	Route::get('/edit/{student_id}','StudentRegController@edit')->name('students.edit');
+	Route::post('/update/{student_id}','StudentRegController@update')->name('students.update');
 	Route::post('/store','StudentRegController@store')->name('students.store');
 	Route::get('/class-year-wise','StudentRegController@classYearWise')->name('students.class.year.search');
+	Route::get('/promotion/{student_id}','StudentRegController@promotion')->name('students.promotion');
+	Route::post('/promotion/{student_id}','StudentRegController@promotionStore')->name('students.promotion.store');
 });
 
 
