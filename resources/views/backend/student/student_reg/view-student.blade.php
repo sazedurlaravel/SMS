@@ -74,6 +74,7 @@
                     <td>
                     <a href="{{route('students.edit',$value->student_id)}}" class="btn btn-success"><i class='fa fa-edit'></i></a>
                     <a href="{{route('students.promotion',$value->student_id)}}" class="btn btn-primary"><i class='fa fa-check-circle'></i></a>
+                     <a target="_blank" href="{{route('students.details',$value->student_id)}}" class="btn btn-info"><i class='fa fa-eye'></i></a>
                     </td>
                   </tr>
                   @endforeach
@@ -121,6 +122,7 @@
                     <td>
                     <a href="{{route('students.promotion',$value->student_id)}}" class="btn btn-success"><i class='fa fa-edit'></i></a>
                     <a href="" class="btn btn-success"><i class='fa fa-tik'></i></a>
+                     <a target="_blank" href="{{route('students.details',$value->student_id)}}" class="btn btn-info"><i class='fa fa-eye'></i></a>
                     </td>
                   </tr>
                   @endforeach

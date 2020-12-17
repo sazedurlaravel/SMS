@@ -150,6 +150,7 @@ Route::prefix('students')->group(function(){
 	Route::get('/class-year-wise','StudentRegController@classYearWise')->name('students.class.year.search');
 	Route::get('/promotion/{student_id}','StudentRegController@promotion')->name('students.promotion');
 	Route::post('/promotion/{student_id}','StudentRegController@promotionStore')->name('students.promotion.store');
+	Route::get('/details/{student_id}','StudentRegController@details')->name('students.details');
 });
 
 

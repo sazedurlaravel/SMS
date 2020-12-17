@@ -13,6 +13,7 @@ use App\User;
 use App\DiscountStudent;
 use App\Year;
 use DB;
+use PDF;
 
 
 class StudentRegController extends Controller
@@ -292,4 +293,12 @@ class StudentRegController extends Controller
 
     	return redirect()->route('students.view')->with('success','Student Registration Successfully !!');
 }
+
+public function details($student_id)
+{
+	$data['details'] = AssignStudent::with('student','discount')->where('student_id',$student_id)->first();
+	$pdf = PDF::loadView('backend.student.student_reg.student-details-pdf',$data);
+	return $pdf->stream('document.pdf');
+}
+
 }
