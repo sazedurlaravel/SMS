@@ -31,6 +31,8 @@
 <script src="{{asset('plugins/datatables-bs4/js/dataTables.bootstrap4.min.js')}}"></script>
 <script src="{{asset('plugins/datatables-responsive/js/dataTables.responsive.min.js')}}"></script>
 <script src="{{asset('plugins/datatables-responsive/js/responsive.bootstrap4.min.js')}}"></script>
+<!-- notifyjs -->
+<script src="{{asset('dist/js/notify.js')}}"></script>
 <!-- AdminLTE App -->
 <script src="{{asset('dist/js/adminlte.js')}}"></script>
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
@@ -38,6 +40,45 @@
 <!-- AdminLTE for demo purposes -->
 <script src="{{asset('dist/js/demo.js')}}"></script>
 
+<!-- Ajax for roll generate -->
+<script type="text/javascript">
+  $(document).on('click','#search',function(){
+    var year_id = $('#year_id').val();
+    
+    var class_id = $('#class_id').val();
+    $('.notifyjs-corner').html('');
+
+    if (year_id == '') {
+      $.notify('Year Required',{globalPosition:'top right',className: 'error'});
+    }
+     if (class_id == '') {
+      $.notify('Class Required',{globalPosition:'top right',className: 'error'});
+    }
+    $.ajax({
+      url:"{{route('students.get_student')}}",
+      type:"GET",
+      data:{'year_id':year_id,'class_id':class_id},
+      success:function(data){
+        
+        $('#roll-generate').removeClass('d-none');
+        var html='';
+        $.each(data,function(key,v){
+          html +=
+          '<tr>'+
+          '<td>'+v.student.id_no+'<input type="hidden" name="student_id[]" value="'+v.student_id+'" ></td>'+
+           '<td>'+v.student.name+'</td>'+
+           '<td>'+v.student.fname+'</td>'+
+           '<td>'+v.student.gender+'</td>'+
+           '<td><input type="text" class="form-control" name="roll[]" value="'+v.roll+'" ></td>'+
+           '</tr>';
+        });
+        html=$('#roll-generate-tr').html(html);
+      }
+    });
+  });
+
+</script>
+<!-- Live image show -->
 <script type="text/javascript">
   $(document).ready(function(){
     $('#image').change(function(e){
@@ -49,6 +90,7 @@
     });
   });
 </script>
+<!-- Data table js  -->
 <script>
   $(function () {
     $("#example1").DataTable({
@@ -60,6 +102,7 @@
   });
 </script>
 
+<!-- Add and remove item -->
  <script type="text/javascript">
   $(document).ready(function(){
     $(document).on("click",".addevent",function(){

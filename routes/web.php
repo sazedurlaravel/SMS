@@ -151,6 +151,11 @@ Route::prefix('students')->group(function(){
 	Route::get('/promotion/{student_id}','StudentRegController@promotion')->name('students.promotion');
 	Route::post('/promotion/{student_id}','StudentRegController@promotionStore')->name('students.promotion.store');
 	Route::get('/details/{student_id}','StudentRegController@details')->name('students.details');
+
+	//Student Roll Generate
+	Route::get('/roll/view','StudentRollController@view')->name('students.roll.view');
+	Route::get('/roll/get-student','StudentRollController@getStudent')->name('students.get_student');
+	Route::post('/roll/store','StudentRollController@rollStore')->name('students.roll.store');
 });
 
 

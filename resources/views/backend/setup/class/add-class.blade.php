@@ -6,14 +6,14 @@
               <div class="card-header">
                 <h3 class="card-title">
                   @if(isset($editData))
-                  Edit User
+                  Edit Class
                   @else
-                  Add User
+                  Add Class
                   @endif
 
 
                 </h3>
-                <a class="btn btn-success float-right" href="{{route('setups.classes.view')}}"><i class="fa fa-list mr-2"></i>View User</a>
+                <a class="btn btn-success float-right" href="{{route('setups.classes.view')}}"><i class="fa fa-list mr-2"></i>View Class</a>
               </div>
               <!-- /.card-header -->
               <div class="card-body">

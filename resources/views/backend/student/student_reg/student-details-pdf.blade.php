@@ -45,6 +45,10 @@
   						<td style="width:50%;text-align: justify;padding: 5px"> <strong>Class</strong></td>
   						<td style="width:50%;text-align: justify;padding: 5px">{{$details['class']['name']}}</td>
   					</tr>
+            <tr>
+              <td style="width:50%;text-align: justify;padding: 5px"> <strong>Roll</strong></td>
+              <td style="width:50%;text-align: justify;padding: 5px">{{$details->roll}}</td>
+            </tr>
   					<tr>
   						<td style="width:50%;text-align: justify;padding: 5px"> <strong>Session</strong></td>
   						<td style="width:50%;text-align: justify;padding: 5px">{{$details['year']['name']}}</td>

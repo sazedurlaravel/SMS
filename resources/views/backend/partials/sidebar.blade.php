@@ -175,9 +175,15 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="{{route('students.add')}}" class="nav-link">
+                <a href="{{route('students.roll.view')}}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Student Registration</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{route('students.roll.view')}}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Student Roll Generate</p>
                 </a>
               </li>
               

@@ -7,7 +7,7 @@
                 <h3 class="card-title">View Student</h3>
               </div>
               <div class="card-body">
-                <form action="" method="GET">
+                <form action="{{route('students.class.year.search')}}" method="GET">
                   <div class="form-row">
                     <div class="col-md-3 form-group">
                       <label>Year<font style="color:red;">*</font></label>
@@ -62,7 +62,7 @@
                     <td>{{$key+1}}</td>
                     <td>{{$value['student']['name']}}</td>
                     <td>{{$value['student']['id_no']}}</td>
-                    <td></td>
+                    <td>{{$value->roll}}</td>
                     <td>{{$value['year']['name']}}</td>
                     <td>{{$value['class']['name']}}</td>
                     <td> 
