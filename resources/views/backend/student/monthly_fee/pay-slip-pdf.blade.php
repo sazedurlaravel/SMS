@@ -28,7 +28,7 @@
         @php 
 
         $registrationfee =
-        App\FeeAmount::where('fee_category_id','1')->where('class_id',$details->class_id)->first();
+        App\FeeAmount::where('fee_category_id','2')->where('class_id',$details->class_id)->first();
         $original_fee = $registrationfee->amount;
         $discount = $details['discount']['discount'];
         $discountable_fee = $discount/100*$original_fee;
@@ -37,7 +37,7 @@
         @endphp
        
 
-  			<p style="font-weight: bold;padding-top: 25px;text-align: center">Student Registration Fee</p>
+  			<p style="font-weight: bold;padding-top: 25px;text-align: center">Student Monthly Fee</p>
   		</div>
   		<div class="col-md-12">
   			<table class="table-sm" border="1" width="100%">
@@ -76,7 +76,7 @@
               <td style="width:50%;text-align: justify;padding-left: 5px">{{$details['group']['name']}}</td>
             </tr>
              <tr>
-              <td style="width:50%;text-align: justify;padding-left: 5px"><strong>Registration Fee</strong></td>
+              <td style="width:50%;text-align: justify;padding-left: 5px"><strong>Monthly Fee</strong></td>
               <td style="width:50%;text-align: justify;padding-left: 5px">{{$registrationfee->amount}} TK</td>
             </tr>
             <tr>
@@ -84,7 +84,7 @@
               <td style="width:50%;text-align: justify;padding-left: 5px">{{$details['discount']['discount']}} TK</td>
             </tr>
             <tr>
-              <td style="width:50%;text-align: justify;padding-left: 5px"><strong>Fee</strong></td>
+              <td style="width:50%;text-align: justify;padding-left: 5px"><strong>Fee of {{$month}}</strong></td>
               <td style="width:50%;text-align: justify;padding-left: 5px">{{$final_fee}} TK</td>
             </tr>
   					
@@ -127,7 +127,7 @@
         @php 
 
         $registrationfee =
-        App\FeeAmount::where('fee_category_id','1')->where('class_id',$details->class_id)->first();
+        App\FeeAmount::where('fee_category_id','2')->where('class_id',$details->class_id)->first();
         $original_fee = $registrationfee->amount;
         $discount = $details['discount']['discount'];
         $discountable_fee = $discount/100*$original_fee;
@@ -136,7 +136,7 @@
         @endphp
        
 
-        <p style="font-weight: bold;padding-top: 25px;text-align: center">Student Registration Fee</p>
+        <p style="font-weight: bold;padding-top: 25px;text-align: center"> Student Monthly Fee</p>
       </div>
       <div class="col-md-12">
         <table class="table-sm" border="1" width="100%">
@@ -175,7 +175,7 @@
               <td style="width:50%;text-align: justify;padding-left: 5px">{{$details['group']['name']}}</td>
             </tr>
              <tr>
-              <td style="width:50%;text-align: justify;padding-left: 5px"><strong>Registration Fee</strong></td>
+              <td style="width:50%;text-align: justify;padding-left: 5px"><strong>Monthly Fee</strong></td>
               <td style="width:50%;text-align: justify;padding-left: 5px">{{$registrationfee->amount}} TK</td>
             </tr>
             <tr>
@@ -183,7 +183,7 @@
               <td style="width:50%;text-align: justify;padding-left: 5px">{{$details['discount']['discount']}} TK</td>
             </tr>
             <tr>
-              <td style="width:50%;text-align: justify;padding-left: 5px"><strong>Fee</strong></td>
+              <td style="width:50%;text-align: justify;padding-left: 5px"><strong>Fee of {{$month}}</strong></td>
               <td style="width:50%;text-align: justify;padding-left: 5px">{{$final_fee}} TK</td>
             </tr>
             

@@ -187,6 +187,18 @@
                 </a>
               </li>
               <li class="nav-item">
+                <a href="{{route('monthly.fee.view')}}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Monthly Fee</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{route('exam.fee.view')}}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Exam Fee</p>
+                </a>
+              </li>
+              <li class="nav-item">
                 <a href="{{route('students.roll.view')}}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Roll Generate</p>

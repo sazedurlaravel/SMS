@@ -15,9 +15,9 @@ use App\FeeAmount;
 use DB;
 use PDF;
 
-class RegFeeController extends Controller
+class MonthlyFeeController extends Controller
 {
-   public function view(Request $request)
+    public function view(Request $request)
     {
     	$data['classes'] = StudentClass::all();
     	$data['years'] = Year::orderBy('id','desc')->get();
@@ -26,15 +26,15 @@ class RegFeeController extends Controller
     	$data['allData']=AssignStudent::where('year_id',$data['year_id'])->where('class_id',$data['class_id'])->get();
     	
     	
-    	return view('backend.student.student_fee.view-reg-fee',$data);
+    	return view('backend.student.monthly_fee.view-monthly-fee',$data);
     }
+
 
     public function getStudent(Request $request)
     {
-    	
-
     	$year_id = $request->year_id;
     	$class_id = $request->class_id;
+    	
     	
     	if ($year_id !='') {
     		$where[] = ['year_id','like',$year_id.'%'];
@@ -42,24 +42,10 @@ class RegFeeController extends Controller
     	if ($class_id !='') {
     		$where[] = ['class_id','like',$class_id.'%'];
     	}
+    	
     	$allStudent = AssignStudent::with(['discount','student'])->where($where)->get();
 
-    	
-     
-    	
-    	
-           
-
-    	// $html['thsource'] = '<th>SL</th>';
-    	// $html['thsource'] .= '<th>ID NO</th>';
-    	// $html['thsource'] .= '<th>Student Name</th>';
-    	// $html['thsource'] .= '<th>Roll</th>';
-    	// $html['thsource'] .= '<th>Registration Fee</th>';
-    	// $html['thsource'] .= '<th>Discount Amount</th>';
-    	// $html['thsource'] .= '<th>Fee (This student)</th>';
-    	// $html['thsource'] .= '<th>Action</th>';
-
-        $registrationfee = FeeAmount::where('fee_category_id','1')->where('class_id',$class_id)->first();
+        $registrationfee = FeeAmount::where('fee_category_id','2')->where('class_id',$class_id)->first();
     	     $html = '';
            foreach ($allStudent as $key => $value) {
            	$color='success';
@@ -74,32 +60,32 @@ class RegFeeController extends Controller
            	$original_fee = $registrationfee->amount;
            	$discount = $value['discount']['discount'];
            	$discountable_fee = $discount/100*$original_fee;
-            $final_fee = (float)$original_fee-(float)$discountable_fee;
+           	$final_fee = (float)$original_fee-(float)$discountable_fee;
 
            	$html .= '<td>'.$final_fee.' tk'.'</td>';
            	$html .= '<td>';
-            $html .= ' <a class="btn btn-sm btn-'.$color.'"title="Payslip" target="_blank" href="'.route("student.fee.payslip"). '?class_id='.$value->class_id.'&student_id='.$value->student_id.'">Fee Slip</a> ';
+            $html .= ' <a class="btn btn-sm btn-'.$color.'"title="Payslip" target="_blank" href="'.route("monthly.fee.payslip"). '?class_id='.$value->class_id.'&student_id='.$value->student_id.'&month='.$request->month.'">Fee Slip</a> ';
            	$html .= '</td>';
             $html .= '</tr>';
 
            }
 
 
+
      return response()->json(@$html);
          
     	
-
-    	
     }
-
     public function payslip(Request $request)
     {
     	
     	$student_id = $request->student_id;
     	$class_id = $request->class_id;
-       
+      
+       $data['month'] = $request->month;
+
     	$data['details'] = AssignStudent::with(['discount','student'])->where('student_id',$student_id)->where('class_id',$class_id)->first();
-    	$pdf = PDF::loadView('backend.student.student_fee.pay-slip-pdf',$data);
+    	$pdf = PDF::loadView('backend.student.monthly_fee.pay-slip-pdf',$data);
   return $pdf->stream('document.pdf');
 
     }

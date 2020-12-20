@@ -160,6 +160,14 @@ Route::prefix('students')->group(function(){
 	Route::get('/reg/fee/view','RegFeeController@view')->name('reg.fee.view');
 	Route::get('/reg/getstudent','RegFeeController@getStudent')->name('students.reg.fee');
 	Route::get('/reg/fee/payslip','RegFeeController@payslip')->name('student.fee.payslip');
+	//Student Monthly Fee Route
+	Route::get('/monthly/fee/view','MonthlyFeeController@view')->name('monthly.fee.view');
+	Route::get('/monthly/getstudent','MonthlyFeeController@getStudent')->name('students.monthly.fee');
+	Route::get('/monthly/fee/payslip','MonthlyFeeController@payslip')->name('monthly.fee.payslip');
+	//Student Exam Fee Route
+	Route::get('/exam/fee/view','ExamFeeController@view')->name('exam.fee.view');
+	Route::get('/exam/getstudent','ExamFeeController@getStudent')->name('students.exam.fee');
+	Route::get('/exam/fee/payslip','ExamFeeController@payslip')->name('exam.fee.payslip');
 });
 
 
