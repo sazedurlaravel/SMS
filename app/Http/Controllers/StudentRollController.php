@@ -37,7 +37,7 @@ class StudentRollController extends Controller
     	$class_id = $request->class_id;
     	if ($request->student_id !=null) {
     		for ($i=0; $i < count($request->student_id); $i++) { 
-    			$rollData = AssignStudent::where('year_id',$year_id)->where('class_id',$class_id)->where('student_id',$request->student_id)->update(['roll'=>$request->roll[$i]]);
+    			$rollData = AssignStudent::where('year_id',$year_id)->where('class_id',$class_id)->where('student_id',$request->student_id[$i])->update(['roll'=>$request->roll[$i]]);
     		}
     	}else{
     			return back()->with('error','Sorry No Student Found');

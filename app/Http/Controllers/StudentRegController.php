@@ -62,7 +62,7 @@ class StudentRegController extends Controller
 
     public function store(Request $request)
     {
-    	
+
     	DB::transaction(function() use($request){
 
     		$checkYear=Year::find($request->year_id)->name;
@@ -112,8 +112,10 @@ class StudentRegController extends Controller
     			$img = time().'.'.$image->getClientOriginalExtension();
     			$location = public_path('backend/img/student/'.$img);
     			Image::make($image)->save($location);
+                $user->image = $img;
     		}
-    		$user->image = $img;
+            
+    		
     		$user->save();
     		$assign_student = new AssignStudent();
     		$assign_student->student_id =$user->id;
@@ -124,8 +126,11 @@ class StudentRegController extends Controller
     		$assign_student->save();
     		$discount_student = new DiscountStudent();
     		$discount_student->assign_student_id =$assign_student->id;
+            $discount_student->fee_category_id =$request->fee_category_id;
     		$discount_student->discount =$request->discount;
     		$discount_student->save();
+            
+            
 
 
     	});
@@ -187,8 +192,10 @@ class StudentRegController extends Controller
     			$img = time().'.'.$image->getClientOriginalExtension();
     			$location = public_path('backend/img/student/'.$img);
     			Image::make($image)->save($location);
-    			$user->image = $img;
+                $user->image = $img;
+    			
     		}
+
     		
     		$user->save();
     		$assign_student =AssignStudent::where('id',$request->id)->where('student_id',$student_id)->first();
@@ -201,6 +208,7 @@ class StudentRegController extends Controller
     		$assign_student->save();
     		$discount_student =DiscountStudent::where('assign_student_id',$request->id)->first();
     		$discount_student->discount =$request->discount;
+            $discount_student->fee_category_id =$request->fee_category_id;
     		$discount_student->save();
 
 

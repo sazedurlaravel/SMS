@@ -39,6 +39,8 @@
 <script src="{{asset('dist/js/pages/dashboard.js')}}"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="{{asset('dist/js/demo.js')}}"></script>
+<script src="{{asset('backend/js/handlebars-v4.7.6.js')}}"></script>
+
 
 <!-- Ajax for roll generate -->
 <script type="text/javascript">
@@ -65,19 +67,77 @@
         $.each(data,function(key,v){
           html +=
           '<tr>'+
-          '<td>'+v.student.id_no+'<input type="hidden" name="student_id[]" value="'+v.student_id+'" ></td>'+
+          '<td>'+v.student.id_no+'<input type="hidden" name="student_id[]" value="'+v.student_id+'"></td>'+
            '<td>'+v.student.name+'</td>'+
            '<td>'+v.student.fname+'</td>'+
            '<td>'+v.student.gender+'</td>'+
            '<td><input type="text" class="form-control" name="roll[]" value="'+v.roll+'" ></td>'+
            '</tr>';
         });
+        console.log(html)
         html=$('#roll-generate-tr').html(html);
       }
     });
   });
 
 </script>
+<script type="text/javascript">
+  $(document).on('click','#click_me',function(){
+    var year_id = $('#year').val();
+    
+    var class_id = $('#class').val();
+    $('.notifyjs-corner').html('');
+
+    if (year_id == '') {
+      $.notify('Year Required',{globalPosition:'top right',className: 'error'});
+    }
+     if (class_id == '') {
+      $.notify('Class Required',{globalPosition:'top right',className: 'error'});
+    }
+    $.ajax({
+      url:"{{route('students.reg.fee')}}",
+      type:"get",
+      data:{'year_id':year_id,'class_id':class_id},
+      beforeSend:function(){
+
+      },
+      success:function(data){
+
+        console.log(data)
+        $('#fee').removeClass('d-none');
+        
+      
+
+
+        // $.each(data[0],function(key,v){
+        //   html +=
+        //   '<tr>'+
+        //   '<td>'+(key+1)+'</td>'+
+        //    '<td>'+v.student.name+'</td>'+
+        //    '<td>'+v.student.class+'</td>'+
+        //    '<td>'+v.roll+'</td>'+
+        //    '<td>'+v.roll+'</td>'+
+        //    '</tr>';
+        // });
+        // html=$('#fee-tr').html(html);
+        
+        // var source = $("#document-template");
+        // var template = Handlebars.compile(source);
+        // var html = template(data);
+        // $("#documentsResoult").html(html);
+        // $('[data-toggle = "tooltip"]').tooltip();
+        $('#fee-tr').html(data);
+      
+      }
+     
+    });
+  });
+
+</script>
+<!-- Ajax for manage Registration Fee -->
+
+
+
 <!-- Live image show -->
 <script type="text/javascript">
   $(document).ready(function(){
