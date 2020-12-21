@@ -81,7 +81,7 @@
             </tr>
             <tr>
               <td style="width:50%;text-align: justify;padding-left: 5px"><strong>Discount</strong></td>
-              <td style="width:50%;text-align: justify;padding-left: 5px">{{$details['discount']['discount']}} TK</td>
+              <td style="width:50%;text-align: justify;padding-left: 5px">{{$details['discount']['discount']}}%</td>
             </tr>
             <tr>
               <td style="width:50%;text-align: justify;padding-left: 5px"><strong>Fee of {{$exam_type_id}}</strong></td>
@@ -180,7 +180,7 @@
             </tr>
             <tr>
               <td style="width:50%;text-align: justify;padding-left: 5px"><strong>Discount</strong></td>
-              <td style="width:50%;text-align: justify;padding-left: 5px">{{$details['discount']['discount']}} TK</td>
+              <td style="width:50%;text-align: justify;padding-left: 5px">{{$details['discount']['discount']}}%</td>
             </tr>
             <tr>
               <td style="width:50%;text-align: justify;padding-left: 5px"><strong>Fee of {{$exam_type_id}}</strong></td>

@@ -208,7 +208,31 @@
             </ul>
           </li>
           
-          
+          <li class="nav-item has-treeview">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-tree"></i>
+              <p>
+                Employee Manage
+                <i class="fas fa-angle-left right"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="{{route('employee.view')}}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Employee List</p>
+                </a>
+              </li>
+
+              <li class="nav-item">
+                <a href="{{route('employee.add')}}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Employee Registration</p>
+                </a>
+              </li>
+              
+            </ul>
+          </li>
          
          
         </ul>

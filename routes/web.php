@@ -170,6 +170,15 @@ Route::prefix('students')->group(function(){
 	Route::get('/exam/fee/payslip','ExamFeeController@payslip')->name('exam.fee.payslip');
 });
 
+//Employee routes
+Route::prefix('employee')->group(function(){
+	Route::get('/view','EmployeeRegController@view')->name('employee.view');
+	Route::get('/add','EmployeeRegController@add')->name('employee.add');
+	Route::get('/edit/{id}','EmployeeRegController@edit')->name('employee.edit');
+	Route::post('/update/{id}','EmployeeRegController@update')->name('employee.update');
+	Route::post('/store','EmployeeRegController@store')->name('employee.store');
+	Route::get('/delete/{id}','EmployeeRegController@delete')->name('employee.delete');
+});
 
 
 

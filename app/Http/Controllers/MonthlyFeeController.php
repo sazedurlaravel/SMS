@@ -55,7 +55,7 @@ class MonthlyFeeController extends Controller
            	$html .= '<td>'.$value['student']['name'].'</td>';
            	$html .= '<td>'.$value->roll.'</td>';
            	$html .= '<td>'.$registrationfee->amount.' tk'.'</td>';
-           	$html .= '<td>'.$value['discount']['discount'].'</td>';
+           	$html .= '<td>'.$value['discount']['discount'].'%'.'</td>';
 
            	$original_fee = $registrationfee->amount;
            	$discount = $value['discount']['discount'];
