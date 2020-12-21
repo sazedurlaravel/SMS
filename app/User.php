@@ -36,4 +36,9 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function designation_name()
+    {
+        return $this->belongsTo(Designation::class,'designation_id','id');
+    }
 }

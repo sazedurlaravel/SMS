@@ -28,7 +28,7 @@
 
                         <div class="col-md-4 form-group">
                           <label>Name <font style="color:red;">*</font></label>
-                        <input class="form-control" type="text" name="name" placeholder="Enter Student Name" value="{{(@$editData)?$editData['student']['name']:""}}">
+                        <input class="form-control" type="text" name="name" placeholder="Enter Student Name" value="{{(@$editData)?$editData->name:""}}">
                         @error('name')
                         <div class="alert" style="color: red;">
                             <button type="button" class="close" data-dismiss="alert">×</button>    
@@ -38,7 +38,7 @@
                         </div>
                         <div class="col-md-4 form-group">
                           <label>Email<font style="color:red;">*</font></label>
-                        <input class="form-control" type="text" name="email" placeholder="Enter Email" value="{{(@$editData)?$editData['student']['email']:""}}">
+                        <input class="form-control" type="text" name="email" placeholder="Enter Email" value="{{(@$editData)?$editData->email:""}}">
                         @error('email')
                         <div class="alert" style="color: red;">
                             <button type="button" class="close" data-dismiss="alert">×</button>    
@@ -48,7 +48,7 @@
                         </div>
                         <div class="col-md-4 form-group">
                           <label>Mobile<font style="color:red;">*</font></label>
-                        <input class="form-control" type="text" name="mobile" placeholder="Enter Mobile" value="{{(@$editData)?$editData['student']['mobile']:""}}">
+                        <input class="form-control" type="text" name="mobile" placeholder="Enter Mobile" value="{{(@$editData)?$editData->mobile:""}}">
                         @error('mobile')
                         <div class="alert" style="color: red;">
                             <button type="button" class="close" data-dismiss="alert">×</button>    
@@ -60,7 +60,7 @@
                        <div class="form-row">
                         <div class="col-md-4 form-group">
                          <label>Address<font style="color:red;">*</font></label>
-                        <input class="form-control" type="text" name="address" placeholder="Enter Address" value="{{(@$editData)?$editData['student']['address']:""}}">
+                        <input class="form-control" type="text" name="address" placeholder="Enter Address" value="{{(@$editData)?$editData->address:""}}">
                         @error('address')
                         <div class="alert" style="color: red;">
                             <button type="button" class="close" data-dismiss="alert">×</button>    
@@ -70,7 +70,7 @@
                         </div>
                         <div class="col-md-4 form-group">
                           <label>Father's Name<font style="color:red;">*</font></label>
-                        <input class="form-control" type="text" name="fname" placeholder="Enter Father's Name" value="{{(@$editData)?$editData['student']['fname']:""}}">
+                        <input class="form-control" type="text" name="fname" placeholder="Enter Father's Name" value="{{(@$editData)?$editData->fname:""}}">
                         @error('fname')
                         <div class="alert" style="color: red;">
                             <button type="button" class="close" data-dismiss="alert">×</button>    
@@ -80,7 +80,7 @@
                         </div>
                         <div class="col-md-4 form-group">
                           <label>Mother's Name<font style="color:red;">*</font></label>
-                        <input class="form-control" type="text" name="mname" placeholder="Enter Mother's Name" value="{{(@$editData)?$editData['student']['mname']:""}}">
+                        <input class="form-control" type="text" name="mname" placeholder="Enter Mother's Name" value="{{(@$editData)?$editData->mname:""}}">
                         @error('mname')
                         <div class="alert" style="color: red;">
                             <button type="button" class="close" data-dismiss="alert">×</button>    
@@ -96,8 +96,8 @@
                           <label>Gender<font style="color:red;">*</font></label>
                         <select class="form-control" name="gender">
                           <option value="">Select Gender</option>
-                          <option value="male" {{(@$editData['student']['gender']=="male")? "selected":""}}>Male</option>
-                          <option value="female">Female</option>
+                          <option value="male" {{(@$editData->gender=="male")? "selected":""}}>Male</option>
+                          <option value="female" {{(@$editData->gender=="female")? "selected":""}}>Female</option>
                         </select>
                         @error('gender')
                         <div class="alert" style="color: red;">
@@ -108,7 +108,7 @@
                         </div>
                          <div class="col-md-4 form-group">
                          <label>Religion<font style="color:red;">*</font></label>
-                        <input class="form-control" type="text" name="religion" placeholder="Enter Religion Name" value="{{(@$editData)?$editData['student']['religion']:""}}">
+                        <input class="form-control" type="text" name="religion" placeholder="Enter Religion Name" value="{{(@$editData)?$editData->religion:""}}">
                         @error('religion')
                         <div class="alert" style="color: red;">
                             <button type="button" class="close" data-dismiss="alert">×</button>    
@@ -118,7 +118,7 @@
                         </div>
                         <div class="col-md-4 form-group">
                          <label>Date of Birth<font style="color:red;">*</font></label>
-                        <input class="form-control" type="date" name="dob"  value="{{(@$editData)?$editData['student']['dob']:""}}">
+                        <input class="form-control" type="date" name="dob"  value="{{(@$editData)?$editData->dob:""}}">
                         @error('dob')
                         <div class="alert" style="color: red;">
                             <button type="button" class="close" data-dismiss="alert">×</button>    
@@ -155,7 +155,7 @@
                          <select class="form-control" name="designation_id">
                           <option value="">Select Designation</option>
                           @foreach($designations as $value)
-                          <option value="{{$value->id}}">{{$value->name}}</option>
+                          <option value="{{$value->id}}" {{(@$editData->designation_id==$value->id)?"selected":""}}>{{$value->name}}</option>
                           @endforeach
                         </select>
                         </div>
@@ -164,7 +164,7 @@
                         
                         <div class="col-md-6 form-group">
                          <label>Image<font style="color:red;">*</font></label>
-                        <input class="form-control" id="image" type="file" name="image" value="{{(@$editData)?$editData['student']['image']:""}}">
+                        <input class="form-control" id="image" type="file" name="image" >
                         @error('image')
                         <div class="alert" style="color: red;">
                             <button type="button" class="close" data-dismiss="alert">×</button>    
@@ -173,7 +173,7 @@
                         @enderror
                         </div>
                         <div class="col-md-6 form-group">
-                          <img src="{{(!empty($editData['student']['image']))? asset('backend/img/student/'.$editData['student']['image']):asset('no_img.png')}}" id="showimg" style="width: 100px;height: 100px;margin-left: 72px;">
+                          <img src="{{(!empty($editData->image))? asset('backend/img/employee/'.$editData->image):asset('no_img.png')}}" id="showimg" style="width: 100px;height: 100px;margin-left: 72px;">
                         </div>
                       </div>
 

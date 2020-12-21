@@ -172,15 +172,24 @@ Route::prefix('students')->group(function(){
 
 //Employee routes
 Route::prefix('employee')->group(function(){
+
 	Route::get('/view','EmployeeRegController@view')->name('employee.view');
 	Route::get('/add','EmployeeRegController@add')->name('employee.add');
 	Route::get('/edit/{id}','EmployeeRegController@edit')->name('employee.edit');
 	Route::post('/update/{id}','EmployeeRegController@update')->name('employee.update');
 	Route::post('/store','EmployeeRegController@store')->name('employee.store');
-	Route::get('/delete/{id}','EmployeeRegController@delete')->name('employee.delete');
+	Route::get('/details/{id}','EmployeeRegController@details')->name('employee.details');
+
+	
+
 });
+Route::prefix('employee')->group(function(){
+	Route::get('/salary/view','EmployeeSalaryController@view')->name('employee.salary.view');
+	Route::get('/salary/increment/{id}','EmployeeSalaryController@increment')->name('employee.salary.increment');
+	Route::post('/salary/store/{id}','EmployeeSalaryController@store')->name('employee.salary.store');
+	Route::get('/salary/details/{id}','EmployeeSalaryController@details')->name('employee.salary.details');
 
-
+});
 
 });
 

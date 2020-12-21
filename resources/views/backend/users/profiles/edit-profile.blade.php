@@ -21,7 +21,7 @@
                 
                 <table id="example1" class="table table-bordered table-striped">
                   
-                   <form action="{{route('profiles.update',$editData->id)}}" method="POST">
+                   <form action="{{route('profiles.update')}}" method="POST" enctype="multipart/form-data">
                     @csrf
                       <div class="form-row">
                         <div class="col-md-4 form-group">
@@ -51,9 +51,33 @@
                            <option value="female" {{($editData->gender=="female")?'selected':""}}>Female</option>
                          </select>
                         </div>
-                        <div class="col-md-3 form-group">
-                          <label>Upload image</label>
-                          <input class="form-control" type="file" name="image" >
+                         <div class="col-md-3form-group">
+                          <label>Designaton</label>
+                         <select class="form-control" name="designation_id">
+                           <option value="">Select Designation</option>
+                          @foreach($designations as $value)
+                          <option value="{{$value->id}}" {{($editData->designation_id==$value->id)?"selected":""}}>{{$value->name}}</option>
+                          @endforeach
+                         </select>
+                        </div>
+                         <div class="col-md-3 form-group">
+                          <label>Date of Birth</label>
+                          <input class="form-control" type="date" name="dob"  value="{{$editData->dob}}">
+                        </div>
+                       
+                      </div> 
+                       <div class="form-row">
+                         <div class="col-md-4 form-group">
+                          <label>Religion</label>
+                          <input class="form-control" type="text" name="religion" placeholder="Enter Religion Name" value="{{$editData->religion}}">
+                        </div>
+                        <div class="col-md-4 form-group">
+                         <label>Image<font style="color:red;">*</font></label>
+                        <input name="image" class="form-control" id="image" type="file"  >
+                       
+                        </div>
+                        <div class="col-md-4 form-group">
+                          <img src="{{(!empty($editData->image))? asset('backend/img/users/'.$editData->image):asset('no_img.png')}}" id="showimg" style="width: 100px;height: 100px;margin-left: 72px;">
                         </div>
                       </div> 
                       

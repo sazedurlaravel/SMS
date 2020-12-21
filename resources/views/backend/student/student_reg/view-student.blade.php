@@ -39,7 +39,7 @@
               <!-- /.card-header -->
               <div class="card-body">
               	@if(!@$search)
-                <table id="example1" class="table table-bordered table-striped">
+                <table id="example1" class="table table-sm table-bordered table-striped">
                 	<a class="btn btn-success float-right" href="{{route('students.add')}}"><i class="fa fa-plus-circle mr-2"></i>Add Student</a>
 				          <thead>
                   <tr>
@@ -87,7 +87,7 @@
                 </table>
                 @else
 
-                <table id="example1" class="table table-bordered table-striped">
+                <table id="example1" class="table table-sm table-bordered table-striped">
                   <a class="btn btn-success float-right" href="{{route('students.add')}}"><i class="fa fa-plus-circle mr-2"></i>Add Student</a>
                   <thead>
                   <tr>

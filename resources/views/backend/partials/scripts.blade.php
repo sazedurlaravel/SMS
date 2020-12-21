@@ -3,6 +3,7 @@
 <!-- jQuery UI 1.11.4 -->
 <script src="{{asset('plugins/jquery-ui/jquery-ui.min.js')}}"></script>
 <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
+
 <script>
   $.widget.bridge('uibutton', $.ui.button)
 </script>
@@ -40,6 +41,8 @@
 <!-- AdminLTE for demo purposes -->
 <script src="{{asset('dist/js/demo.js')}}"></script>
 <script src="{{asset('backend/js/handlebars-v4.7.6.js')}}"></script>
+<script src="{{asset('backend/js/parsley.js')}}"></script>
+<script src="{{asset('backend/js/parsley.min.js')}}"></script>
 
 
 <!-- Ajax for roll generate -->

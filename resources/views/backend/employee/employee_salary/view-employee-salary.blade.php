@@ -18,8 +18,6 @@
                     <th>ID No</th>
                     <th>Name</th>
                     <th>Mobile</th>
-                    <th>Address</th>
-                    <th>Gender</th>
                     <th>Join Date</th>
                     <th>Salary</th>
                     <th>Code</th>
@@ -34,8 +32,6 @@
                     <td>{{$value->id_no}}</td>
                     <td>{{$value->name}}</td>
                     <td>{{$value->mobile}}</td>
-                    <td>{{$value->address}}</td>
-                    <td>{{$value->gender}}</td>
                     <td>{{$value->join_date}}</td>
                     <td>{{$value->salary}}</td>
                     <td>{{$value->code}}</td>
@@ -46,9 +42,9 @@
                     </td>
                     
                     <td>
-                    <a href="{{route('employee.edit',$value->id)}}" class="btn btn-sm btn-success"><i class='fa fa-edit'></i></a>
+                    <a href="{{route('employee.salary.increment',$value->id)}}" class="btn btn-sm btn-success"><i class='fa fa-plus'></i></a>
                     
-                     <a target="_blank" href="{{route('employee.details',$value->id)}}" class="btn btn-sm btn-info"><i class='fa fa-eye'></i></a>
+                     <a target="_blank" href="{{route('employee.salary.details',$value->id)}}" class="btn btn-sm btn-info"><i class='fa fa-eye'></i></a>
                     </td>
                   </tr>
                   @endforeach
