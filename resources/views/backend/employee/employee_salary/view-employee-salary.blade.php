@@ -4,14 +4,14 @@
 
  <div class="card">
               <div class="card-header">
-                <h3 class="card-title">Employee List</h3>
+                <h3 class="card-title">Manage Employee Salary</h3>
               </div>
               
               <!-- /.card-header -->
               <div class="card-body">
               	@if(!@$search)
                 <table id="example1" class="table table-sm table-bordered table-striped">
-                	<a class="btn btn-success float-right" href="{{route('employee.add')}}"><i class="fa fa-plus-circle mr-2"></i>Add Employee</a>
+                	
 				          <thead>
                   <tr>
                     <th>SL.No</th>
@@ -32,8 +32,8 @@
                     <td>{{$value->id_no}}</td>
                     <td>{{$value->name}}</td>
                     <td>{{$value->mobile}}</td>
-                    <td>{{$value->join_date}}</td>
-                    <td>{{$value->salary}}</td>
+                    <td>{{date('d-m-Y',strtotime($value->join_date))}}</td>
+                    <td>{{$value->salary}} TK</td>
                     <td>{{$value->code}}</td>
                     <td> 
                       <img src="{{(!empty($value->image))? asset('backend/img/employee/'.$value->image):asset('no_img.png')}}" id="showimg" style="width: 50px;height: 50px;">

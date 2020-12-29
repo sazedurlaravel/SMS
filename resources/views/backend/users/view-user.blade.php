@@ -18,6 +18,7 @@
                     <th>Email</th>
                     <th>Role</th>
                     <th>Code</th>
+                    <th>Status</th>
                     <th>Action</th>
                   </tr>
                   </thead>
@@ -29,6 +30,18 @@
                     <td>{{$value->email}}</td>
                     <td>{{$value->role}}</td>
                     <td>{{$value->code}}</td>
+                    <td>
+                        <form action="{{route('users.status',$value->id)}}" method="POST">
+                          @csrf
+                         
+                        @if($value->status == '1')
+                        <button  type="submit" class="btn btn-sm btn-info">active</button>
+                        @else
+                        <button  type="submit" class="btn btn-sm btn-warning">deactive</button>
+                        @endif
+                        </form>
+                       
+                      </td>
                     <td>
                     <a href="{{route('users.edit',$value->id)}}" class="btn btn-success"><i class='fa fa-edit'></i></a>
                     <a href="" class="btn btn-danger"><i class='fa fa-trash'></i></a>

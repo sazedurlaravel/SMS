@@ -60,6 +60,8 @@ class StudentRegController extends Controller
     	return view('backend.student.student_reg.add-student',$data);
     }
 
+    
+
     public function store(Request $request)
     {
 

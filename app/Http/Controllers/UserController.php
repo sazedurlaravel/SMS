@@ -4,16 +4,16 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
+use Auth;
 
 class UserController extends Controller
 {
     public function view()
     {	
-        
         $data['allData'] = User::where('userType','admin')->get();
         return view('backend.users.view-user',$data);
 
-      
+    
            
       
     }
@@ -80,4 +80,22 @@ class UserController extends Controller
 
        
     }
+
+    public function changeStatus($id)
+    {   
+        $user = User::find($id);
+
+        if ($user->status == '1') {
+            $user->status = '0';
+            $user->save();
+        }else{
+             $user->status = '1';
+             $user->save();
+        }
+       
+        
+        return redirect()->route('users.view');
+    }
+
+    
 }

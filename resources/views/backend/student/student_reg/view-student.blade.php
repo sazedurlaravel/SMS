@@ -50,6 +50,7 @@
                     <th>Year</th>
                     <th>Class</th>
                     <th>Image</th>
+                    
                     <th>Code</th>
                     
                    
@@ -68,6 +69,7 @@
                     <td> 
                       <img src="{{(!empty($value['student']['image']))? asset('backend/img/student/'.$value['student']['image']):asset('no_img.png')}}" id="showimg" style="width: 50px;height: 50px;">
                         </div></td>
+                      
                     <td>{{$value['student']['code']}}
                     </td>
                     

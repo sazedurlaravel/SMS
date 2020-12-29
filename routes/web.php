@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -17,9 +18,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::group(['middleware'=>'auth'],function(){
 
-	Route::get('/', function () {
-    return view('backend.layouts.master');
-});
+	Route::get('/','DefaultController@dashboard')->name('dashboard');
 
 	//user routes
 Route::prefix('users')->group(function(){
@@ -29,6 +28,7 @@ Route::prefix('users')->group(function(){
 	Route::post('/update/{id}','UserController@update')->name('users.update');
 	Route::post('/store','UserController@store')->name('users.store');
 	Route::get('/delete/{id}','UserController@delete')->name('users.delete');
+	Route::post('/status/{id}','UserController@changeStatus')->name('users.status');
 });
 
 	//Class routes
@@ -156,6 +156,11 @@ Route::prefix('students')->group(function(){
 	Route::get('/roll/view','StudentRollController@view')->name('students.roll.view');
 	Route::get('/roll/get-student','StudentRollController@getStudent')->name('students.get_student');
 	Route::post('/roll/store','StudentRollController@rollStore')->name('students.roll.store');
+	
+});
+
+
+Route::prefix('fees')->group(function(){
 	//Student Registration Fee Route
 	Route::get('/reg/fee/view','RegFeeController@view')->name('reg.fee.view');
 	Route::get('/reg/getstudent','RegFeeController@getStudent')->name('students.reg.fee');

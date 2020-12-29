@@ -213,6 +213,27 @@
 
 </script>
 
+<!-- Status ajax -->
+<!-- <script type="text/javascript">
+  $(document).on('click','#active',function(){
+    var id = $('#id').val();
+    $.ajax({
+      url:"{{route('users.status','id')}}",
+      type:"post",
+      data:{},
+      beforeSend:function(){
+
+      },
+      success:function(data){
+        alert(data)
+      }
+     
+    });
+  });
+
+</script> -->
+
+
 <!-- Live image show -->
 <script type="text/javascript">
   $(document).ready(function(){
