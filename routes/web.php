@@ -196,6 +196,16 @@ Route::prefix('employee')->group(function(){
 
 });
 
+//Marks entry route
+Route::prefix('marks')->group(function(){
+	Route::get('/add','MarksController@add')->name('marks.add');
+	Route::post('/store','MarksController@store')->name('marks.store');
+//default conntroller
+Route::get('/get-subject','DefaultController@getSubject')->name('marks.get-subject');
+Route::get('/get-student','DefaultController@getStudent')->name('marks.get-student');
+
+});
+
 });
 
 

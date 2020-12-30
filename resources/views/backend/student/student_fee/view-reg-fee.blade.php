@@ -65,3 +65,60 @@
             </div>
 
 @endsection
+
+@section('scripts')
+  
+<script type="text/javascript">
+  $(document).on('click','#click_me',function(){
+    var year_id = $('#year').val();
+    
+    var class_id = $('#class').val();
+    $('.notifyjs-corner').html('');
+
+    if (year_id == '') {
+      $.notify('Year Required',{globalPosition:'top right',className: 'error'});
+    }
+     if (class_id == '') {
+      $.notify('Class Required',{globalPosition:'top right',className: 'error'});
+    }
+    $.ajax({
+      url:"{{route('students.reg.fee')}}",
+      type:"get",
+      data:{'year_id':year_id,'class_id':class_id},
+      beforeSend:function(){
+
+      },
+      success:function(data){
+
+    
+        $('#fee').removeClass('d-none');
+        
+      
+
+
+        // $.each(data[0],function(key,v){
+        //   html +=
+        //   '<tr>'+
+        //   '<td>'+(key+1)+'</td>'+
+        //    '<td>'+v.student.name+'</td>'+
+        //    '<td>'+v.student.class+'</td>'+
+        //    '<td>'+v.roll+'</td>'+
+        //    '<td>'+v.roll+'</td>'+
+        //    '</tr>';
+        // });
+        // html=$('#fee-tr').html(html);
+        
+        // var source = $("#document-template");
+        // var template = Handlebars.compile(source);
+        // var html = template(data);
+        // $("#documentsResoult").html(html);
+        // $('[data-toggle = "tooltip"]').tooltip();
+        $('#fee-tr').html(data);
+      
+      }
+     
+    });
+  });
+
+</script>
+@endsection

@@ -40,15 +40,11 @@ class ExamTypeController extends Controller
 
      public function update(Request $request,$id)
     {
-    		 $this->validate($request,[
-            'name' => 'required|unique:exam_types,name'
-            
-        ]);
          $examType=ExamType::find($id);
          $examType=new ExamType();
          $examType->name=$request->name;
          $examType->save();
 
-         return redirect()->route('exam.type.view')->with('success','ExamType Added Successfully !!');
+         return redirect()->route('exam.type.view')->with('success','ExamType Updated Successfully !!');
     }
 }

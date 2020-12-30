@@ -26,7 +26,7 @@
                     <td>{{$value->name}}</td>
                     
                     <td>
-                    <a href="{{route('fee.category.edit',$value->id)}}" class="btn btn-success"><i class='fa fa-eye'></i></a>
+                    <a href="{{route('fee.category.edit',$value->id)}}" class="btn btn-success"><i class='fa fa-edit'></i></a>
                     <a href="" class="btn btn-danger"><i class='fa fa-trash'></i></a>
                     </td>
                   </tr>

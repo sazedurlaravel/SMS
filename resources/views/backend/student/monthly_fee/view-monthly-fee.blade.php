@@ -93,3 +93,42 @@
             </div>
 
 @endsection
+
+@section('scripts')
+  <!-- Ajax for monthly Fee -->
+<script type="text/javascript">
+  $(document).on('click','#click_me',function(){
+    var year_id = $('#year').val();
+    
+    var class_id = $('#class').val();
+    $('.notifyjs-corner').html('');
+
+     var month = $('#month').val();
+    $('.notifyjs-corner').html('');
+
+    if (year_id == '') {
+      $.notify('Year Required',{globalPosition:'top right',className: 'error'});
+    }
+     if (class_id == '') {
+      $.notify('Class Required',{globalPosition:'top right',className: 'error'});
+    }
+    if (month == '') {
+      $.notify('Month Required',{globalPosition:'top right',className: 'error'});
+    }
+    $.ajax({
+      url:"{{route('students.monthly.fee')}}",
+      type:"get",
+      data:{'year_id':year_id,'class_id':class_id,'month':month},
+      beforeSend:function(){
+
+      },
+      success:function(data){
+        $('#fee').removeClass('d-none');
+        $('#monthly_fee-tr').html(data);
+      }
+     
+    });
+  });
+
+</script>
+@endsection

@@ -86,3 +86,43 @@
 
 
 @endsection
+
+@section('scripts')
+  <!-- Ajax for Exam Fee -->
+<script type="text/javascript">
+  $(document).on('click','#click_me',function(){
+    var year_id = $('#year').val();
+    
+    var class_id = $('#class').val();
+    $('.notifyjs-corner').html('');
+
+     var exam_type_id = $('#exam_type_id').val();
+    $('.notifyjs-corner').html('');
+
+    if (year_id == '') {
+      $.notify('Year Required',{globalPosition:'top right',className: 'error'});
+    }
+     if (class_id == '') {
+      $.notify('Class Required',{globalPosition:'top right',className: 'error'});
+    }
+    if (exam_type_id == '') {
+      $.notify('ExamType Required',{globalPosition:'top right',className: 'error'});
+    }
+    $.ajax({
+      url:"{{route('students.exam.fee')}}",
+      type:"get",
+      data:{'year_id':year_id,'class_id':class_id,'exam_type_id':exam_type_id},
+      beforeSend:function(){
+
+      },
+      success:function(data){
+        $('#fee').removeClass('d-none');
+        $('#exam_fee-tr').html(data);
+      }
+     
+    });
+  });
+
+</script>
+
+@endsection

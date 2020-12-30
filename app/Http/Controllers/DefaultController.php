@@ -8,6 +8,8 @@ use App\Subject;
 use App\Group;
 use App\StudentClass;
 use App\EmployeeSalarylog;
+use App\AssignSubject;
+use App\AssignStudent;
 
 class DefaultController extends Controller
 {
@@ -57,5 +59,20 @@ class DefaultController extends Controller
     return view('backend.layouts.index',$data);
 
 	} 
+
+	 public function getSubject(Request $request)
+    {
+    	$class_id = $request->class_id;
+    	$allData = AssignSubject::with(['subject_name'])->where('class_id',$class_id)->get();
+
+    	return response()->json($allData);
+    }
+
+    public function getStudent(Request $request)
+    {
+    	$allData = AssignStudent::with(['student'])->where('year_id',$request->year_id)->where('class_id',$request->class_id)->get();
+    	return response()->json($allData);
+
+    }
    		
 }

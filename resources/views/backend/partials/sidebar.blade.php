@@ -32,7 +32,7 @@
       
           <li class="nav-item has-treeview {{($prefix == '/users')?"menu-open":""}}">
             <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-user"></i>
+              <i class="nav-icon fas fa-users"></i>
               <p>
                 Manage Users
                 <i class="fas fa-angle-left right"></i>
@@ -52,7 +52,7 @@
 
           <li class="nav-item has-treeview {{($prefix == '/profiles')?"menu-open":""}}">
             <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-tree"></i>
+              <i class="nav-icon fas fa-user-cog"></i>
               <p>
                 Manage Profile
                 <i class="fas fa-angle-left right"></i>
@@ -77,7 +77,7 @@
 
           <li class="nav-item has-treeview {{($prefix == '/setups')?"menu-open":""}}">
             <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-tree"></i>
+              <i class="nav-icon fas fa-cogs"></i>
               <p>
                 Manage Setup
                 <i class="fas fa-angle-left right"></i>
@@ -156,7 +156,7 @@
 
            <li class="nav-item has-treeview {{($prefix == '/students')?"menu-open":""}}">
             <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-tree"></i>
+              <i class="nav-icon fas fa-user-graduate"></i>
               <p>
                 Manage Students
                 <i class="fas fa-angle-left right"></i>
@@ -188,7 +188,7 @@
 
            <li class="nav-item has-treeview {{($prefix == '/fees')?"menu-open":""}}">
             <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-tree"></i>
+              <i class="nav-icon fas fa-comments-dollar"></i>
               <p>
                 Fee Management
                 <i class="fas fa-angle-left right"></i>
@@ -220,7 +220,7 @@
           
           <li class="nav-item has-treeview {{($prefix == '/employee')?"menu-open":""}}">
             <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-tree"></i>
+              <i class="nav-icon fas fa-toolbox"></i>
               <p>
                 Employee Manage
                 <i class="fas fa-angle-left right"></i>
@@ -249,6 +249,25 @@
               
             </ul>
           </li>
+           <li class="nav-item has-treeview {{($prefix == '/marks')?"menu-open":""}}">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-edit"></i>
+              <p>
+                Marks Management
+                <i class="fas fa-angle-left right"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="{{route('marks.add')}}" class="nav-link {{($route == 'marks.add')?"active":""}}">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Marks Entry</p>
+                </a>
+              </li>
+              
+            </ul>
+          </li>
+
          
          
         </ul>

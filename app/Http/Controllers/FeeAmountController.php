@@ -72,7 +72,7 @@ class FeeAmountController extends Controller
        
        }
 
-        return redirect()->route('fee.amount.view')->with('success','FeeAmount added successfully !!');
+        return redirect()->route('fee.amount.view')->with('success','FeeAmount updated successfully !!');
 
        }
 
