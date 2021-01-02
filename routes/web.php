@@ -212,6 +212,11 @@ Route::prefix('marks')->group(function(){
 //Student Result Route
 	Route::get('get-result','MarksController@getResult')->name('get.result');
 	Route::get('get-result-view','MarksController@getResultView')->name('get.result.view');
+
+//Grade Point Route
+	Route::get('/grade/view','GradeController@view')->name('grade.view');
+	Route::get('/grade/add','GradeController@add')->name('grade.add');
+	Route::post('/grade/store','GradeController@store')->name('grade.store');
 });
 
 });

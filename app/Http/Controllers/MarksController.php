@@ -14,6 +14,7 @@ use App\DiscountStudent;
 use App\Year;
 use App\ExamType;
 use App\MarkEntry;
+use App\GradePoint;
 use App\Subject;
 use DB;
 use PDF;
@@ -106,9 +107,31 @@ class MarksController extends Controller
 
              $totals =(integer)$cq_marks+(integer)$mcq_marks+(integer)$practical_marks+(integer)$class_attendence;
 
+             if ($totals >= "80" && $totals <= "100") {
+               $data->grade_id = "A+";
+               $data->grade_point = "5";
+             }elseif ($totals >= "70" && $totals <= "79") {
+               $data->grade_id = "A";
+               $data->grade_point = "4";
+             }elseif ($totals >= "60" && $totals <= "69") {
+               $data->grade_id = "A-";
+               $data->grade_point = "3.5";
+             }elseif ($totals >= "50" && $totals <= "59") {
+               $data->grade_id = "B";
+               $data->grade_point = "3";
+             }elseif ($totals >= "40" && $totals <= "49") {
+               $data->grade_id = "2";
+               $data->grade_point = "4";
+             }elseif ($totals >= "33" && $totals <= "39") {
+                $data->grade_id = "D";
+                $data->grade_point = "1";
+             }elseif ($totals >= "00" && $totals <= "32") {
+               $data->grade_id = "F";
+               $data->grade_point = "0";
+             }
+
 
              $data->total_marks = $totals;
-             $data->grade_id = '1';
              $data->save();
          }
 
@@ -154,9 +177,11 @@ class MarksController extends Controller
         $class_id = $request->class_id;
         $exam_type_id = $request->exam_type_id;
         $id_no = $request->id_no;
+
         $singleStudent = MarkEntry::where('year_id',$year_id)->where('class_id',$class_id)->where('exam_type_id',$exam_type_id)->where('id_no',$id_no)->first();
         if ($singleStudent == true) {
           $data['allmarks'] = MarkEntry::with(['subject','student_name','year_name','class_name','exam_name'])->where('year_id',$year_id)->where('class_id',$class_id)->where('exam_type_id',$exam_type_id)->where('id_no',$id_no)->get();
+          $data['grades'] = GradePoint::all();
         }
 
         return view('backend.marks.result-view',$data);

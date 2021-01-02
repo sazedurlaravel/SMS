@@ -23,18 +23,23 @@
                     <th>Practical Mark</th>
                     <th>Attendence Mark</th>
                     <th>Total Marks</th>
-                    <th>Grade</th>
+                    <th>Grade Point</th>
+                    <th>Grade Name</th>
 
                    
                   </tr>
                  
                   </thead>
                   <tbody>
-                  	@php
-                  	 $sum = 0;
-                  	@endphp
+                    @php
+                    $sum =0;
+                     $total_point = 0;
+                    @endphp
 
                   @foreach($allmarks as $key=>$value)
+
+
+                  
                   <tr>
                     <td>{{$key+1}}</td>
                     <td>{{$value['subject']['name']}}</td>
@@ -43,20 +48,28 @@
                     <td>{{$value->practical_marks}}</td>
                     <td>{{$value->class_attendence}}</td>
                     <td>{{$value->total_marks}}</td>
+                    <td>{{number_format((float)$value->grade_point,2)}}</td>
+                    @php
+                     $subject_count = App\MarkEntry::where('year_id',$value->year_id)->where('class_id',$value->class_id)->where('exam_type_id',$value->exam_type_id)->where('student_id',$value->student_id)->get()->count();
+                    @endphp
                     <td>{{$value->grade_id}}</td>
                     
                   </tr>
 
                   @php
                   $sum +=$value->total_marks;
+                   $total_point +=number_format((float)$value->grade_point,2);
+                   $avarage_point = (float)$total_point/(int)$subject_count;
                  
                   @endphp
                  
                   @endforeach
+
                     <tr>
-                    <th colspan="6" style="text-align: center;"><strong>Total Marks</strong></th>
+                    <th colspan="6" style="text-align: center;"><strong>Total</strong></th>
                     <td>{{$sum}}</td>
-                    <td>A+</td>
+                    <td>{{number_format((float)$avarage_point,2)}}</td>
+                    <td></td>
                   </tr>
                   </tbody>
                   <tfoot>

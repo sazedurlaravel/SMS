@@ -26,7 +26,8 @@ class CreateMarkEntriesTable extends Migration
             $table->string('practical_marks')->nullable();
             $table->string('class_attendence')->nullable();
             $table->string('total_marks');
-            $table->integer('grade_id');
+            $table->string('grade_point');
+            $table->string('grade_id');
             $table->timestamps();
         });
     }
