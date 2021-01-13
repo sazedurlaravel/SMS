@@ -264,6 +264,12 @@
                   <p>Marks Entry</p>
                 </a>
               </li>
+              <li class="nav-item">
+                <a href="{{route('marks.data')}}" class="nav-link {{($route == 'marks.data')?"active":""}}">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Students Mark</p>
+                </a>
+              </li>
               
             </ul>
           </li>

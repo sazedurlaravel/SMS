@@ -198,11 +198,15 @@ Route::prefix('employee')->group(function(){
 
 //Marks entry route
 Route::prefix('marks')->group(function(){
-	Route::get('/add','MarksController@add')->name('marks.add');
+	Route::get('/add','MarksController@view')->name('marks.add');
+	Route::get('/get-student','MarksController@getStudent')->name('marks.get.student');
 	Route::post('/store','MarksController@store')->name('marks.store');
-//default conntroller
-Route::get('/get-subject','DefaultController@getSubject')->name('marks.get-subject');
-Route::get('/get-student','DefaultController@getStudent')->name('marks.get-student');
+	Route::get('/data','MarksController@data')->name('marks.data');
+	Route::get('/details/{student_id}','MarksController@details')->name('marks.details');
+// 	Route::post('/store','MarksController@store')->name('marks.store');
+// //default conntroller
+// Route::get('/get-subject','DefaultController@getSubject')->name('marks.get-subject');
+// Route::get('/get-student','DefaultController@getStudent')->name('marks.get-student');
 
 });
 
