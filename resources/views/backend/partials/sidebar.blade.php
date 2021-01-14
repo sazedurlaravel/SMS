@@ -258,6 +258,7 @@
               </p>
             </a>
             <ul class="nav nav-treeview">
+              
               <li class="nav-item">
                 <a href="{{route('marks.add')}}" class="nav-link {{($route == 'marks.add')?"active":""}}">
                   <i class="far fa-circle nav-icon"></i>
@@ -270,6 +271,15 @@
                   <p>Students Mark</p>
                 </a>
               </li>
+
+              <li class="nav-item">
+                <a href="{{route('get.result')}}" class="nav-link {{($route == 'get.result')?"active":""}}">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Students Result</p>
+                </a>
+              </li>
+
+             
               
             </ul>
           </li>

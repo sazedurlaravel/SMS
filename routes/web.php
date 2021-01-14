@@ -203,11 +203,15 @@ Route::prefix('marks')->group(function(){
 	Route::post('/store','MarksController@store')->name('marks.store');
 	Route::get('/data','MarksController@data')->name('marks.data');
 	Route::get('/details/{student_id}','MarksController@details')->name('marks.details');
+	
 // 	Route::post('/store','MarksController@store')->name('marks.store');
 // //default conntroller
 // Route::get('/get-subject','DefaultController@getSubject')->name('marks.get-subject');
 // Route::get('/get-student','DefaultController@getStudent')->name('marks.get-student');
 
+//Student Result Route
+	Route::get('get-result','MarksController@getResult')->name('get.result');
+	Route::get('get-result-view','MarksController@getResultView')->name('get.result.view');
 });
 
 });

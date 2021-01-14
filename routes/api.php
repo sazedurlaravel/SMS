@@ -19,4 +19,4 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('data',[MarksController::class,'data']);
+Route::get('search/{search}',[MarksController::class,'search']);

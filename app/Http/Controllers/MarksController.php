@@ -135,4 +135,31 @@ class MarksController extends Controller
 
       return view('backend.marks.details',$data);
     }
+
+    public function getResult()
+    {
+      
+     $data['years'] =Year::orderBy('id','asc')->get();
+        $data['classes'] = StudentClass::orderBy('id','asc')->get();
+        $data['exams'] = ExamType::all();
+       
+
+      return view('backend.marks.search',$data);
+    }
+
+    public function getResultView(Request $request)
+    {
+
+        $year_id = $request->year_id;
+        $class_id = $request->class_id;
+        $exam_type_id = $request->exam_type_id;
+        $id_no = $request->id_no;
+        $singleStudent = MarkEntry::where('year_id',$year_id)->where('class_id',$class_id)->where('exam_type_id',$exam_type_id)->where('id_no',$id_no)->first();
+        if ($singleStudent == true) {
+          $data['allmarks'] = MarkEntry::with(['subject','student_name','year_name','class_name','exam_name'])->where('year_id',$year_id)->where('class_id',$class_id)->where('exam_type_id',$exam_type_id)->where('id_no',$id_no)->get();
+        }
+
+        return view('backend.marks.result-view',$data);
+
+    }
 }

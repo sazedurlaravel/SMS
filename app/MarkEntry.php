@@ -22,4 +22,9 @@ class MarkEntry extends Model
     {
     	return $this->belongsTo(StudentClass::class,'class_id','id');
     }
+
+     public function exam_name()
+    {
+        return $this->belongsTo(ExamType::class,'exam_type_id','id');
+    }
 }

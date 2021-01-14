@@ -4,10 +4,10 @@
 
  <div class="card">
               <div class="card-header">
-                <h3 class="card-title">Student Marks Entry</h3>
+                <h3 class="card-title">Student Result</h3>
               </div>
               <div class="card-body">
-                <form action="{{route('marks.get.student')}}" method="GET">
+                <form action="{{route('get.result.view')}}" method="GET">
                   @csrf
                   <div class="form-row">
                     <div class="col-md-2 form-group">
@@ -32,7 +32,7 @@
                     </div>
                      <div class="col-md-2 form-group">
                       <label>Examtype<font style="color:red;">*</font></label>
-                    <select name="exam_type_id" class="form-control-sm">
+                    <select name="exam_type_id" class="form-control">
                        <option value="">Select Exam</option>
                        @foreach($exams as $exam)
                         <option value="{{$exam->id}}">{{$exam->name}}</option>
@@ -41,20 +41,14 @@
 
                     </div>
                      <div class="col-md-3 form-group">
-                      <label>Subject<font style="color:red;">*</font></label>
-                    <select class="form-control" id="subject_id" name="subject_id">
-                      <option value="">Select Subject</option>
-                      @foreach($subjects as $sub)
-                      <option value="{{$sub->id}}">{{$sub->name}}</option>
-                      @endforeach
-                      
-                    </select>
+                      <label>ID NO<font style="color:red;">*</font></label>
+                        <input class="form-control" type="text" name="id_no" placeholder="ID NO">
 
                     </div>
                      
                     
                     <div class="col-md-2 form-group">
-                      <button name="search" type="submit" id="search" class="btn btn-primary" style="margin-top: 28%;">Search</button>
+                      <button name="search" type="submit" id="search" class="btn btn-primary" style="margin-top: 25%;">Search</button>
 
                     </div>
                   </div>
