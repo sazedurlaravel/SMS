@@ -289,6 +289,28 @@
               
             </ul>
           </li>
+          <li class="nav-item has-treeview {{($prefix == '/site')?"menu-open":""}}">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-edit"></i>
+              <p>
+                Site Management
+                <i class="fas fa-angle-left right"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              
+               <li class="nav-item">
+                <a href="{{route('slider.view')}}" class="nav-link {{($route == 'slider.view')?"active":""}}">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Slider Manage</p>
+                </a>
+              </li>
+              
+
+             
+              
+            </ul>
+          </li>
 
          
          

@@ -16,7 +16,7 @@ class EmployeeRegController extends Controller
 {
      public function view(Request $request)
     {
-    	$data['allData'] = User::where('userType','employee')->get();
+    	$data['allData'] = User::where('userType','teacher')->get();
     	
     	return view('backend.employee.employee_reg.view-employee',$data);
     }
@@ -73,7 +73,7 @@ class EmployeeRegController extends Controller
     		$code = rand(0000,9999);
     		$user= new User();
     		$user->name =$request->name;
-    		$user->userType ='employee';
+    		$user->userType ='teacher';
     		$user->fname =$request->fname;
     		$user->mname =$request->mname;
     		$user->mobile =$request->mobile;
@@ -151,7 +151,7 @@ class EmployeeRegController extends Controller
     		$code = rand(0000,9999);
     		$user= User::find($id);
     		$user->name =$request->name;
-    		$user->userType ='employee';
+    		$user->userType ='teacher';
     		$user->fname =$request->fname;
     		$user->mname =$request->mname;
     		$user->mobile =$request->mobile;

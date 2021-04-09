@@ -14,13 +14,32 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::get('/','FrontendController@viewTeacher');
+Route::get('/notice/view','NoticeController@viewNotice')->name('notice.view');
+
+
+//Frontend route
+
+Route::prefix('site')->group(function(){
+
+	//slider routes
+	Route::get('/slider/view','SliderController@view')->name('slider.view');
+	Route::get('/slider/edit/{id}','SliderController@edit')->name('slider.edit');
+	Route::get('/slider/create','SliderController@create')->name('slider.create');
+	Route::post('/slider/store','SliderController@store')->name('slider.store');
+	Route::post('/slider/update/{id}','SliderController@update')->name('slider.update');
+	Route::get('/slider/delete/{id}','SliderController@delete')->name('slider.delete');
+
+	//notice routes
+	Route::get('/notice/create','NoticeController@create')->name('notice.add');
+});
 
 
 Route::group(['middleware'=>'auth'],function(){
 
-	Route::get('/','DefaultController@dashboard')->name('dashboard');
+	Route::get('/admin','DefaultController@dashboard')->name('dashboard');
 
-	//user routes
+	//user routes	
 Route::prefix('users')->group(function(){
 	Route::get('/view','UserController@view')->name('users.view');
 	Route::get('/add','UserController@add')->name('users.add');
